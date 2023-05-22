@@ -1,0 +1,7 @@
+.idea/
+.vagrant/
+
+.env
+.env.vault
+
+pre_condition_resource/__pycache__/
