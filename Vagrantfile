@@ -48,6 +48,8 @@ Vagrant.configure("2") do |config|
       override.ssh.username = "ubuntu"
       override.ssh.private_key_path = key_path + "/" + key_name + ".pem"
     end
+    master.vm.provision "shell", path: "ubuntu_functions.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region}
+    master.vm.provision "file", source: "./ubuntu_commons.sh", destination: "ubuntu_commons.sh"
     master.vm.provision "shell", path: "bootstrap_master.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region, "MASTER_IP" => master_ip, "NODE1_IP" => node1_ip, "NODE2_IP" => node2_ip, "S3_BUCKET_PATH" => s3_bucket_path}
   end
 
@@ -76,6 +78,8 @@ Vagrant.configure("2") do |config|
       override.ssh.username = "ubuntu"
       override.ssh.private_key_path = key_path + "/" + key_name + ".pem"
     end
+    node1.vm.provision "shell", path: "ubuntu_functions.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region}
+    node1.vm.provision "file", source: "./ubuntu_commons.sh", destination: "ubuntu_commons.sh"
     node1.vm.provision "shell", path: "bootstrap_node1.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region, "MASTER_IP" => master_ip, "NODE1_IP" => node1_ip, "NODE2_IP" => node2_ip, "S3_BUCKET_PATH" => s3_bucket_path}
   end
 
@@ -104,6 +108,8 @@ Vagrant.configure("2") do |config|
       override.ssh.username = "ubuntu"
       override.ssh.private_key_path = key_path + "/" + key_name + ".pem"
     end
+    node2.vm.provision "shell", path: "ubuntu_functions.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region}
+    node2.vm.provision "file", source: "./ubuntu_commons.sh", destination: "ubuntu_commons.sh"
     node2.vm.provision "shell", path: "bootstrap_node2.sh", env: {"ACCESS_KEY" => access_key, "SECRET_KEY" => secret_key, "KEY_NAME" => key_name, "REGION" => region, "MASTER_IP" => master_ip, "NODE1_IP" => node1_ip, "NODE2_IP" => node2_ip, "S3_BUCKET_PATH" => s3_bucket_path}
   end
 end

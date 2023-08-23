@@ -16,7 +16,7 @@ plugin_install:
 	vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box
 
 up:
-	aws s3 rm s3://cnp-key/token.join
+	aws s3 rm s3://kubeadm-739999085319/token.join
 	vagrant up --provider=aws
 
 connect:
