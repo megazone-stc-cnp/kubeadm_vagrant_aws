@@ -2,6 +2,24 @@
 
 NAME=$1
 
+# default install
+apt -y update
+apt install -y git unzip
+
+unlink /bin/sh
+ln -s /bin/bash /bin/sh
+
+# AWS CLI v2 install
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+
+# aws cli configure
+aws configure set aws_access_key_id ${ACCESS_KEY}
+aws configure set aws_secret_access_key ${SECRET_KEY}
+aws configure set region ${REGION}
+aws configure set output json
+
 # os 버전 체크
 cat /etc/os-release
 
@@ -23,7 +41,7 @@ ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 date
 
 # hostname 변경
-hostnamectl set-hostname ${NAME}
+hostnamectl set-hostname ${NODE_NAME}
 
 hostname
 

@@ -15,6 +15,7 @@ ec2를 생성할 aws cli 환경이 구축되어 있어야 한다.
 python3 버전에 boto3 패키지가 설치되어 있어야 한다.
 vagrant가 설치되어 있어야 한다. ( vagrant-env, vagrant-aws plugin 설치 필요)
 default vpc가 존재해야 한다. 만약에 없다면, pre_condition_resource/create_security_group.py 에 default_vpc 정보 읽어 오는 부분을 수정해야 한다.
+Makefile과 s3 bucket에 
 
 Notices
 ~~~~~~~

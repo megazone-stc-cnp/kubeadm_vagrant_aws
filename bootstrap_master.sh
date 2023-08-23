@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-sh ./ubuntu_commons.sh master
-
 # control-plaine 컴포넌트 구성
 kubeadm init --pod-network-cidr=192.168.0.0/16 --cri-socket unix:///var/run/cri-dockerd.sock | tee $HOME/kubeadm_init.log
 JOIN_COMMAND=$(tail -n 2 $HOME/kubeadm_init.log)
