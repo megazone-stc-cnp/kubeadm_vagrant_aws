@@ -23,6 +23,9 @@ aws configure set output json
 # os 버전 체크
 cat /etc/os-release
 
+# swap off
+swapoff -a
+
 # 메모리 체크
 free -h
 
